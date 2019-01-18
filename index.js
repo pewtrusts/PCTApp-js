@@ -1,4 +1,4 @@
-import Router from '../router/';
+import Router from '@Router';
 export default class PCTApp {
     init(subscriptionsForRouter, PubSubSetter, setHashFn, decodeHashFn, views){
         
