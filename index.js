@@ -1,9 +1,10 @@
 import Router from '@Router';
 export default class PCTApp {
     init(subscriptionsForRouter, PubSubSetter, setHashFn, decodeHashFn, views){
-        
-        this.router = new Router();
-        this.router.init(subscriptionsForRouter, PubSubSetter, setHashFn, decodeHashFn, views);
+        if ( this.needsRouter ){
+            this.router = new Router();
+            this.router.init(subscriptionsForRouter, PubSubSetter, setHashFn, decodeHashFn, views);
+        }
         this.disableHoverOnTouch();
     }
     disableHoverOnTouch(){
