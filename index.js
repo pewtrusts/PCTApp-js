@@ -1,9 +1,15 @@
 import Router from '@Router';
 export default class PCTApp {
-    init(subscriptionsForRouter, PubSubSetter, setHashFn, decodeHashFn, views){
-        if ( this.needsRouter ){
+    constructor(container, options){
+        this.container = container;
+        Object.keys(options).forEach(option => {
+            this[option] = options[option];
+        });
+    }
+    init(routerOptions){
+        if ( this.needsRouter ){ // comes from options object
             this.router = new Router();
-            this.router.init(subscriptionsForRouter, PubSubSetter, setHashFn, decodeHashFn, views);
+            this.router.init(routerOptions);
         }
         this.disableHoverOnTouch();
     }
