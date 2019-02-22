@@ -2,6 +2,7 @@ import Router from '@Router';
 export default class PCTApp {
     constructor(container, options){
         this.container = container;
+        this.el = document.querySelector(container);
         Object.keys(options).forEach(option => {
             this[option] = options[option];
         });
@@ -43,5 +44,23 @@ export default class PCTApp {
         document.addEventListener('mousemove', enableHover, true);
 
         enableHover();
+    }
+    createComponent(model, component, selector, _options){ 
+        var options = Object.create({
+            children: [],
+            data: null,
+            model,
+            parent: null,
+            rerenderOnDataMismatch: false
+        });
+        if ( _options !== null && typeof _options === 'object' ){
+            for ( let key in _options ){
+                if ( _options.hasOwnProperty(key) ){
+                    options[key] = _options[key];
+                }
+            }
+        }
+        
+        return new component(selector, options);
     }
 }
