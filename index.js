@@ -51,7 +51,8 @@ export default class PCTApp {
             data: null,
             model,
             parent: null,
-            rerenderOnDataMismatch: false
+            rerenderOnDataMismatch: false,
+            createComponent: this.createComponent // should be backward compatible
         });
         if ( _options !== null && typeof _options === 'object' ){
             for ( let key in _options ){
@@ -60,7 +61,6 @@ export default class PCTApp {
                 }
             }
         }
-        
         return new component(selector, options);
     }
 }
