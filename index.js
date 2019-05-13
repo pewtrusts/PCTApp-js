@@ -45,12 +45,12 @@ export default class PCTApp {
 
         enableHover();
     }
-    createComponent(model, component, selector, _options){
+    createComponent(component, selector, _options){
         console.log(this); 
         var options = Object.create({
             children: [],
             data: null,
-            model,
+            model: this.model,
             parent: this,
             rerenderOnDataMismatch: false,
             createComponent: this.createComponent, // should be backward compatible
