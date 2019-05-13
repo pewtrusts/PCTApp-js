@@ -1,8 +1,8 @@
 import Router from '@Router';
 export default class PCTApp {
-    constructor(container, options){
-        this.container = container;
-        this.el = document.querySelector(container);
+    constructor(selector, options){
+        this.selector = selector;
+        this.el = document.querySelector(selector);
         Object.keys(options).forEach(option => {
             this[option] = options[option];
         });
@@ -45,14 +45,17 @@ export default class PCTApp {
 
         enableHover();
     }
-    createComponent(model, component, selector, _options){ 
+    createComponent(model, component, selector, _options){
+        console.log(this); 
         var options = Object.create({
             children: [],
             data: null,
             model,
-            parent: null,
+            parent: this,
             rerenderOnDataMismatch: false,
-            createComponent: this.createComponent // should be backward compatible
+            createComponent: this.createComponent, // should be backward compatible
+            renderToSelector: this.selector,
+
         });
         if ( _options !== null && typeof _options === 'object' ){
             for ( let key in _options ){
