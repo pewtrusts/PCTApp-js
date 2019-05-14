@@ -46,8 +46,9 @@ export default class PCTApp {
         enableHover();
     }
     createComponent(component, selector, _options){
-        console.log(this); 
+        console.log(component, this.parent); 
         var options = Object.create({
+            app: this.app ? this.app : this,
             children: [],
             data: null,
             model: this.model,
