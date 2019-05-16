@@ -3,6 +3,7 @@ export default class PCTApp {
     constructor(selector, options){
         this.selector = selector;
         this.el = document.querySelector(selector);
+        this.views = [];
         Object.keys(options).forEach(option => {
             this[option] = options[option];
         });
