@@ -55,7 +55,8 @@ export default class PCTApp {
             parent: this,
             rerenderOnDataMismatch: false,
             createComponent: this.createComponent, // should be backward compatible
-            renderToSelector: this.selector,
+            renderToSelector: null,
+            renderToElement: this.el
 
         });
         if ( _options !== null && typeof _options === 'object' ){
